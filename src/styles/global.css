@@ -1,0 +1,222 @@
+/* ── Design Tokens ─────────────────────────────────────────────────────────── */
+:root {
+  --gold:         #C9A84C;
+  --gold-light:   #e8c96a;
+  --gold-dim:     #a8872e;
+  --dark:         #0d0d0d;
+  --dark-2:       #141414;
+  --dark-3:       #1c1c1c;
+  --dark-4:       #252525;
+  --text-muted:   #888;
+  --border:       rgba(255, 255, 255, 0.07);
+  --card-radius:  16px;
+  --modal-radius: 20px;
+}
+
+/* ── Reset & Base ──────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background:  var(--dark);
+  color:       #e8e8e8;
+  font-family: 'DM Sans', sans-serif;
+  font-size:   15px;
+  min-height:  100vh;
+  margin:      0;
+}
+
+/* ── Custom Scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar         { width: 6px; }
+::-webkit-scrollbar-track   { background: var(--dark-2); }
+::-webkit-scrollbar-thumb   { background: var(--gold); border-radius: 3px; }
+
+/* ── Apple-style Activity Indicator Spinner ────────────────────────────────── */
+.apple-spinner {
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.apple-spinner span {
+  display:          block;
+  position:         absolute;
+  top:              50%;
+  left:             50%;
+  width:            3px;
+  height:           9px;
+  border-radius:    2px;
+  background:       var(--gold);
+  transform-origin: center -8px;
+  opacity:          0;
+  animation:        apple-fade 1s linear infinite;
+}
+
+/* 12 spokes, each rotated 30° apart, staggered */
+.apple-spinner span:nth-child(1)  { transform: rotate(0deg)   translateX(-50%); animation-delay: -1.0s; }
+.apple-spinner span:nth-child(2)  { transform: rotate(30deg)  translateX(-50%); animation-delay: -0.917s; }
+.apple-spinner span:nth-child(3)  { transform: rotate(60deg)  translateX(-50%); animation-delay: -0.833s; }
+.apple-spinner span:nth-child(4)  { transform: rotate(90deg)  translateX(-50%); animation-delay: -0.75s; }
+.apple-spinner span:nth-child(5)  { transform: rotate(120deg) translateX(-50%); animation-delay: -0.667s; }
+.apple-spinner span:nth-child(6)  { transform: rotate(150deg) translateX(-50%); animation-delay: -0.583s; }
+.apple-spinner span:nth-child(7)  { transform: rotate(180deg) translateX(-50%); animation-delay: -0.5s; }
+.apple-spinner span:nth-child(8)  { transform: rotate(210deg) translateX(-50%); animation-delay: -0.417s; }
+.apple-spinner span:nth-child(9)  { transform: rotate(240deg) translateX(-50%); animation-delay: -0.333s; }
+.apple-spinner span:nth-child(10) { transform: rotate(270deg) translateX(-50%); animation-delay: -0.25s; }
+.apple-spinner span:nth-child(11) { transform: rotate(300deg) translateX(-50%); animation-delay: -0.167s; }
+.apple-spinner span:nth-child(12) { transform: rotate(330deg) translateX(-50%); animation-delay: -0.083s; }
+
+@keyframes apple-fade {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Small variant */
+.apple-spinner.sm {
+  width: 22px;
+  height: 22px;
+}
+.apple-spinner.sm span {
+  width:  2px;
+  height: 6px;
+  transform-origin: center -5px;
+}
+
+/* ── Shared Button Styles ──────────────────────────────────────────────────── */
+.btn-gold {
+  background:  linear-gradient(135deg, var(--gold), var(--gold-dim));
+  color:       #000;
+  font-weight: 700;
+  border:      none;
+  border-radius: 10px;
+  padding:     8px 20px;
+  font-size:   0.85rem;
+  letter-spacing: 0.5px;
+  transition:  all 0.2s;
+  cursor:      pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-gold:hover {
+  background:  linear-gradient(135deg, var(--gold-light), var(--gold));
+  transform:   translateY(-1px);
+  box-shadow:  0 4px 16px rgba(201, 168, 76, 0.3);
+}
+.btn-gold:disabled {
+  opacity: 0.45;
+  cursor:  not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-outline-dim {
+  background:    transparent;
+  border:        1px solid var(--border);
+  color:         #888;
+  border-radius: 10px;
+  padding:       8px 16px;
+  font-size:     0.85rem;
+  cursor:        pointer;
+  transition:    all 0.2s;
+  font-family:   'DM Sans', sans-serif;
+  white-space:   nowrap;
+}
+.btn-outline-dim:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── Shared Form Controls ──────────────────────────────────────────────────── */
+.form-control-dark {
+  background:    var(--dark-4);
+  border:        1px solid var(--border);
+  color:         #e8e8e8;
+  border-radius: 10px;
+  padding:       10px 14px;
+  font-size:     0.9rem;
+  font-family:   'DM Sans', sans-serif;
+  width:         100%;
+  transition:    all 0.2s;
+}
+.form-control-dark:focus {
+  outline:    none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.12);
+  background: var(--dark-4);
+  color:      #fff;
+}
+.form-control-dark::placeholder { color: #555; }
+.form-control-dark::-webkit-calendar-picker-indicator { filter: invert(0.6); }
+
+/* ── Alert Boxes ───────────────────────────────────────────────────────────── */
+.alert-danger-dark {
+  background:    rgba(248, 113, 113, 0.1);
+  border:        1px solid rgba(248, 113, 113, 0.25);
+  color:         #f87171;
+  border-radius: 10px;
+  padding:       10px 14px;
+  font-size:     0.85rem;
+  margin-bottom: 1rem;
+}
+.alert-success-dark {
+  background:    rgba(74, 222, 128, 0.1);
+  border:        1px solid rgba(74, 222, 128, 0.25);
+  color:         #4ade80;
+  border-radius: 10px;
+  padding:       10px 14px;
+  font-size:     0.85rem;
+  margin-bottom: 1rem;
+}
+
+/* ── Empty States ──────────────────────────────────────────────────────────── */
+.empty-state           { text-align: center; padding: 5rem 1rem; }
+.empty-state__icon     { font-size: 3.5rem; color: var(--dark-4); margin-bottom: 1rem; }
+.empty-state__title    { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 1px; color: #444; }
+.empty-state__subtitle { color: #555; font-size: 0.9rem; }
+
+/* ── Section Typography ────────────────────────────────────────────────────── */
+.section-title {
+  font-family:    'Bebas Neue', sans-serif;
+  font-size:      2.2rem;
+  letter-spacing: 2px;
+  color:          #fff;
+}
+.section-title span { color: var(--gold); }
+.section-sub        { color: var(--text-muted); font-size: 0.9rem; font-weight: 300; }
+
+/* ── Status Pills (Bookings) ───────────────────────────────────────────────── */
+.status-pill {
+  display:       inline-block;
+  font-size:     0.68rem;
+  font-weight:   700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding:       3px 10px;
+  border-radius: 20px;
+  margin-top:    5px;
+}
+.status-pending   { background: rgba(251, 191, 36, 0.12);  color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.25); }
+.status-confirmed { background: rgba(74, 222, 128, 0.12);  color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.25); }
+.status-cancelled { background: rgba(248, 113, 113, 0.12); color: #f87171; border: 1px solid rgba(248, 113, 113, 0.25); }
+
+/* ── Modal Backdrop ────────────────────────────────────────────────────────── */
+.modal-backdrop-custom {
+  position:        fixed;
+  inset:           0;
+  background:      rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  z-index:         1050;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  padding:         1rem;
+  animation:       fadeIn 0.2s ease;
+}
+@keyframes fadeIn  { from { opacity: 0; }              to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+/* ── Responsive Helpers ────────────────────────────────────────────────────── */
+@media (max-width: 576px) {
+  .section-title { font-size: 1.7rem; }
+}
+ 
