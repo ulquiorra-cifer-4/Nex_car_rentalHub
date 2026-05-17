@@ -1,0 +1,22 @@
+.sectionHead {
+  display:         flex;
+  align-items:     flex-end;
+  justify-content: space-between;
+  margin-bottom:   1.5rem;
+}
+
+.center {
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  justify-content: center;
+  padding:         5rem 1rem;
+  text-align:      center;
+  gap:             1rem;
+}
+
+.loadingText {
+  color:     #555;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
