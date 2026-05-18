@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import HeroCarousel from '../../components/HeroCarousel/HeroCarousel';
 import FilterBar from '../../components/FilterBar/FilterBar';
 import CarCard from '../../components/CarCard/CarCard';
+import BrandsSection from '../../components/BrandsSection/BrandsSection';
 import BookingModal from '../../components/BookingModal/BookingModal';
 import AuthModal from '../../components/AuthModal/AuthModal';
 import Spinner from '../../components/Spinner/Spinner';
@@ -75,6 +76,9 @@ export default function HomePage() {
         />
       )}
       {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
+
+      {/* Brand logos strip */}
+      <BrandsSection />
     </>
   );
 }
