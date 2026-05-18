@@ -7,6 +7,7 @@ import MyBookingsPage from './pages/MyBookingsPage/MyBookingsPage';
 import AuthModal from './components/AuthModal/AuthModal';
 import ToastContainer from './components/Toast/ToastContainer';
 import NotFoundPage from './pages/NotFoundPage';
+import FAQSection from './components/FAQSection/FAQSection';
 import Footer from './components/Footer/Footer';
 
 export default function App() {
@@ -23,11 +24,11 @@ export default function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
 
+        {/* FAQ above footer on every page */}
+        <FAQSection />
         <Footer />
 
         {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
-
-        {/* Global toast notifications */}
         <ToastContainer />
       </AppProvider>
     </BrowserRouter>
